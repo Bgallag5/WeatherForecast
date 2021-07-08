@@ -7,10 +7,10 @@ header {
   margin-left: 50%;
 }
 
-#container {
+/* #container {
   display: flex;
-  /* width: 100%; */
-}
+   width: 100%; 
+} */
 
 #city-search {
   border: blue 1px solid;
@@ -23,6 +23,7 @@ header {
 }
 
 .sections {
+margin: 0;
   padding: 20px;
 }
 

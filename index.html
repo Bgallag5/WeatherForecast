@@ -14,14 +14,17 @@
 <div class=" row" id="page">
 <section class="container col-3 sections" id="city-search">
 <div>Search for a city </div>
-<input type="text" id="citySearch" placeholder="city"/>
-<button onclick="getWeather()" >Search</button>
+<input type="text" id="citySearch" placeholder="city" class="search-term"/>
+<button onclick="getOneDay()" >Search</button>
 </section>
 
-<section class="container col-9 sections" id="weather-display">
-<div id="oneDay" class="row">
-<h2>City name</h2><h3>Date</h3>
-
+<section class="row col-9 sections" id="weather-display">
+<div id="oneDay" class="container">
+<h2>City name + Date + Icon</h2>
+<p>Temp</p>
+<p>Wind</p>
+<p>Humidity</p>
+<p>UV Index</p>
 </div>
 
 <div id="fiveDay" class="container row">
@@ -45,7 +48,6 @@
 </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="assets/js/script.js"></script>
 </body>
 </html>
