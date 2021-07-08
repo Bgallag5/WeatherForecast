@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header>Weather Dashbord</header>
+
+<div class=" row" id="page">
+<section class="container col-3 sections" id="city-search">
+<div>Search for a city </div>
+<input type="text" id="citySearch" placeholder="city"/>
+<button onclick="getWeather()" >Search</button>
+</section>
+
+<section class="container col-9 sections" id="weather-display">
+<div id="oneDay" class="row">
+<h2>City name</h2><h3>Date</h3>
+
+</div>
+
+<div id="fiveDay" class="container row">
+<h3>Five Day Forecast</h3>    
+<div class="row container fiveBoxes">
+<div class="col-2 singleOfFive" id="day-1">
+    <p>Date</p>
+    <p>Icon</p>
+    <p>Temp</p>
+    <p>Wind</p>
+    <p>Humidity</p>
+</div>
+<div class="col-2 singleOfFive" id="day-2">Hello</div>
+<div class="col-2 singleOfFive" id="day-3">Hello</div>
+<div class="col-2 singleOfFive" id="day-4">Hello</div>
+<div class="col-2 singleOfFive" id="day-5">Hello</div>
+</div>
+</div>
+
+</section>
+</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
