@@ -1,12 +1,37 @@
 
 const apiKey = "e09ebb7db49ee70223da23fbbc92a143"
-const todaysWeather = {};
+var todaysWeather = {};
+const myCities = [];
 
-function getOneDay(city){
-    var place = document.querySelector("#citySearch").value;
-    console.log(city)
-    // var pastCity = 
-    // var location = place.textContent
+
+$('#searchBtn').on("click", function(){
+    var place = $('#citySearch').val().trim()
+    console.log(place)
+    getWeather(place)
+
+    var newButton = document.createElement("button")
+    newButton.innerHTML = place;
+    newButton.setAttribute("id", "button")
+$('#past-searches').append(newButton);
+// var place = city.value();
+
+})
+
+
+// function pageLoad(){
+//     var storedCity = JSON.parse(localStorage.getItem("cities")) 
+//     if (storedCity){
+// myCities = storedCity;
+//     }
+//     if(!storedCity){
+
+//     }
+// }
+
+
+var getWeather = function(place){
+    console.log(place)
+ 
 //call API based on loaction
 fetch(`https://api.openweathermap.org/data/2.5/weather?q=${place}&APPID=${apiKey}`)
 .then(response => response.json())
@@ -27,6 +52,7 @@ fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${lon
     console.log(data)
     var current = data.current
     var city = location;
+    todaysWeather = [""];
     todaysWeather.temp= Math.round(((current.temp - 273.15) * 1.8) + 32) 
     todaysWeather.humidity = current.humidity; 
     todaysWeather.wind = current.wind_speed + "MPH";
@@ -38,6 +64,7 @@ fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${lon
     console.log(todaysWeather);
     document.getElementById('oneDay').innerHTML="";
     document.querySelector('.fiveDayWeather').innerHTML="";
+    
 
     $('#oneDay').append(
         `<div class= "card">
@@ -45,9 +72,10 @@ fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${lon
         <p> Temp: ${todaysWeather.temp}</p>
         <p> Wind Speed: ${todaysWeather.wind}</p>
         <p> Humidity: ${todaysWeather.humidity}</p>
+        <p> UV Index: <span class="p-2" id= "uvColor">${todaysWeather.uvIndex}</span></p>
         </div> `
     );
- 
+
     for(i=1; i < 6; i++){
         var list = data.daily[i]
         var temps = list.temp.day;
@@ -67,16 +95,27 @@ fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${lon
             </div>`
         )
     }
+        colorCode(todaysWeather.uvIndex)
+        
 })
 }
+//color code UV Index; color code from google search 'uv index chart'
+function colorCode(index){
 
-$('.btn').on("click", function(){
-    
-    var city = $('#citySearch').val().trim()
-    console.log(city)
-    var newButton = document.createElement("button")
-  newButton.innerHTML = city;
-  newButton.setAttribute("onclick", function(city){
-    
-  })
-})
+    console.log(index)
+if (index >= 0 && index < 3){
+    $('#uvColor').attr("style", "background-color: green")
+}
+else if (index >= 3 && index < 6){
+    $('#uvColor').attr("style", "background-color: yellow")
+}
+else if (index >=6 && index < 8){
+    $('#uvColor').attr("style", "background-color: orange")
+}
+else if (index >=8 && index < 11){
+    $('#uvColor').attr("style", "background-color: red")
+}
+else if (index >= 11){
+    $('#uvColor').attr("style", "background-color: pink")
+}
+}
