@@ -32,30 +32,32 @@ margin: 0;
   height: 300px;
 }
 
-#fiveDay {
+#fiveDay{
   border: red 1px solid;
   display: flex;
   justify-content: space-around;
 }
 
+.fiveDayWeather{
+  display: flex;
+  justify-content: space-around;
+}
+
 #fiveDay p {
-  color: black;
+  color: white;
   padding: 5px;
 }
 
 #fiveDay h5 {
-    color: black;
+    color: white;
     padding: 5px;
   }
 /* ////////////////////////////////////////////////////////Single Days///////////////// */
 
 .singleOfFive {
   flex-wrap: wrap;
-  background-color: rgb(58, 58, 138);
+  background-color: rgb(53, 169, 223);
   padding: 10px;
 }
 
-.fiveBoxes {
-  display: flex;
-  justify-content: space-around;
-}
+
