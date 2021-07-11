@@ -134,7 +134,7 @@ function colorCode(index) {
 
 pageLoad();
 
-document.addEventListener("keyup", function(event){   //add event listener for "keyup if keycode=13", keycode 13= enter key
+$("#citySearch").keyup(function(event){   //add event listener for "keyup if keycode=13", keycode 13= enter key
   if (event.keyCode === 13){
     event.preventDefault();
     document.getElementById("searchBtn").click();  //if enter key is released, the button is set to onclick and the function runs
