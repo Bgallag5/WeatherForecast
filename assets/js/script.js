@@ -12,6 +12,7 @@ $("#searchBtn").on("click", function (event) {
   var newButton = document.createElement("button");
   newButton.innerHTML = place;
   newButton.setAttribute("id", "button");
+  newButton.setAttribute("class", "btn btn-light");
   newButton.onclick = function(){
       getWeather(place);
     }
@@ -90,7 +91,7 @@ function getFiveDay(latitude, longitude, location) {
       document.querySelector(".fiveDayWeather").innerHTML = "";
 
       $("#oneDay").append(
-        `<div class= "card">
+        `<div class= "card" id= "oneDayForecast">
         <h3>${city}, ${todaysWeather.date}</h3>
         <img src = "http://openweathermap.org/img/wn/${todaysWeather.icon}@2x.png" style = "width: 80px; height: 80px"></img>
         <p> Temp: ${todaysWeather.temp}</p>

@@ -4,21 +4,27 @@
 }
 
 header {
-  margin-left: 50%;
+  margin:auto;
+  text-align: center;
+background-image: linear-gradient(to right, rgb(45, 45, 218), rgb(53, 169, 223));
+color: white;
 }
-
+body{
+    background-color: rgb(231, 231, 231);
+}
 /* #container {
   display: flex;
    width: 100%; 
 } */
 
 #city-search {
-  border: blue 1px solid;
   display: inline;
+  background-color: rgb(45, 45, 218);
+  border-radius: 5px;
+  text-align: left;
 }
 
 #weather-display {
-  border: green solid 2px;
   display: inline-block;
 }
 
@@ -28,13 +34,15 @@ margin: 0;
 }
 
 #oneDay {
-  border: yellow 1px solid;
   height: 300px;
 }
 
+#oneDayForecast{
+    padding: 15px;
+}
+
 #fiveDay{
-  border: red 1px solid;
-  display: flex;
+  display:inline;
   justify-content: space-around;
 }
 
@@ -60,4 +68,9 @@ margin: 0;
   padding: 10px;
 }
 
-
+#button{
+    width: 100%;
+text-align: center;
+padding: 10px;
+margin: 10px 0;
+}
