@@ -2,14 +2,15 @@ const apiKey = "e09ebb7db49ee70223da23fbbc92a143";
 var todaysWeather = [];
 var myCities = [];
 
+//search button onclick, creates button and searches weather
 $("#searchBtn").on("click", function (event) {
     event.preventDefault();
   var place = $("#citySearch").val().trim();
   console.log(place);
-//   myCities.push(place)
+    myCities.push(place)
   getWeather(place);
-  localStorage.setItem("cities", JSON.stringify(myCities)); //this will move down
-  var newButton = document.createElement("button");
+  localStorage.setItem("cities", JSON.stringify(myCities)); 
+  var newButton = document.createElement("button");   //create the button
   newButton.innerHTML = place;
   newButton.setAttribute("id", "button");
   newButton.setAttribute("class", "btn btn-light");
@@ -19,7 +20,7 @@ $("#searchBtn").on("click", function (event) {
   $("#past-searches").append(newButton);
   // var place = city.value();
 });
-
+//on page load, search local storage for past searches and populate the page with that city
 function pageLoad() {
   var storedCity = JSON.parse(localStorage.getItem("cities"));
   if (storedCity !== null) {
@@ -27,23 +28,13 @@ function pageLoad() {
     myCities = storedCity; // array myCities is populated by storedCity
   }
   if (storedCity) {
-    //if storedCity array has objects
-    var loadCity = myCities; //
+    //if storedCity array has objects, load last city 
+    var loadCity = myCities[myCities.length-1]; //
     console.log(loadCity);
     getWeather(loadCity);
   }
 }
 
-// function makeButtons() {
-//   $("#past-searches").empty();
-//   myCities.forEach(function (city) {
-//     var cityButtons = document.getElementById("past-searches");
-//     cityButtons.append(
-//       $(`<button class = "list-group cityButton" onclick = getWeather(this.val())>${city}</button>
-//       `)
-//     );
-//   });
-// }
 
 var getWeather = function (place) {
   console.log(place);
@@ -56,7 +47,6 @@ var getWeather = function (place) {
     .then(function (response) {
       console.log(response);
       var location = response.name;
-      var temp = response.main.temp;
       var latitude = response.coord.lat;
       var longitude = response.coord.lon;
       getFiveDay(latitude, longitude, location);
@@ -72,6 +62,7 @@ function getFiveDay(latitude, longitude, location) {
       console.log(data);
       var current = data.current;
       var city = location;
+      //grab data
       todaysWeather = [""];
       todaysWeather.temp = Math.round((current.temp - 273.15) * 1.8 + 32);
       todaysWeather.humidity = current.humidity;
@@ -102,6 +93,7 @@ function getFiveDay(latitude, longitude, location) {
       );
 
       for (i = 1; i < 6; i++) {
+          //grab data
         var list = data.daily[i];
         var temps = list.temp.day;
         var fahrenheit = Math.round((temps - 273.15) * 1.8 + 32);
